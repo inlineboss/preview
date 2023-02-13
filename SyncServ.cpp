@@ -14,8 +14,6 @@ namespace async_server {
 	void defread(std::string&, boost::asio::ip::tcp::socket*) {}
 	void defconnect(boost::asio::ip::tcp::socket*) {}
 	bool defdisconnect(int bytes, boost::asio::ip::tcp::socket*) {return bytes;};
-
-	 
 	void handle_connections(Events events)
 	{
 		boost::asio::ip::tcp::acceptor acceptor(service, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), 8001));
