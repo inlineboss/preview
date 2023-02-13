@@ -5,8 +5,10 @@ add_subdirectory(libs)
 
 find_package( Boost COMPONENTS regex system program_options REQUIRED )
 
-
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} main.cpp SyncServ.h SyncServ.cpp)
+if (WIN32) 
+add_definitions(-D_WIN32_WINNT=0x0601)
+endif()
 
 target_link_libraries (${PROJECT_NAME} PRIVATE Boost::system)
 
