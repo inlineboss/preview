@@ -35,10 +35,10 @@ bool checkconnect(int bytes) {
 
 int main(int argc, char* argv[])
 {
-	std::string hellostring[] = {"Hello\r\n", "Hi\r\n", "Nihao\r\n", "Poshel nahuy!\r\n"};
+	std::vector<std::string> hellostring = {"Hello\r\n", "Hi\r\n", "Nihao\r\n", "Poshel nahuy!\r\n"};
 	
 	IClients *clients = 
-		new ClientsBanner(*hellostring,
+		new ClientsBanner(hellostring,
 			new ClientsLogger (
 				new ClientsBroadcast(
 					new ClientsCache()
@@ -53,9 +53,6 @@ int main(int argc, char* argv[])
 
 	event.accept_connet = [&](boost::asio::ip::tcp::socket* sock) {
 		clients->add(sock);
-		
-		sock->write_some(boost::asio::buffer(hellostring[i]));
-		i < 3 ? i++ : i = 0;
 	};
 
 

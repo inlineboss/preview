@@ -1,10 +1,9 @@
 #include "ClientsBanner.h"
 #include <iostream>
 
-ClientsBanner::ClientsBanner(std::string banner, IClients* impl) :
-	impl_(impl), banner_(banner)
+ClientsBanner::ClientsBanner(std::vector<std::string> banner, IClients* impl) :
+	impl_(impl), banner_(banner), i(0)
 {
-
 }
 
 ClientsBanner::~ClientsBanner()
@@ -12,7 +11,8 @@ ClientsBanner::~ClientsBanner()
 }
 
 void ClientsBanner::add(boost::asio::ip::tcp::socket* sock) {
-	sock->write_some(boost::asio::buffer(banner_));
+	sock->write_some(boost::asio::buffer(banner_[i]));
+	(i<banner_.size()) ? this->i++ : this->i=0;
 	impl_->add(sock);
 }
 

@@ -5,9 +5,10 @@ class ClientsBanner : public IClients
 {
 private:
 	IClients* impl_;
-	const std::string banner_;
+	const std::vector<std::string> banner_;
+	int i;
 public:
-	ClientsBanner(std::string, IClients*);
+	ClientsBanner(std::vector<std::string>, IClients*);
 	~ClientsBanner();
 	virtual void add(boost::asio::ip::tcp::socket* sock) override;
 	virtual void remove(boost::asio::ip::tcp::socket* sock) override;
