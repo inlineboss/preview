@@ -2,16 +2,13 @@
 #include <vector>
 #include <boost/asio.hpp>
 
-class Clients
+class IClients
 {
 public:
-	Clients();
-	~Clients();
-	virtual void add(boost::asio::ip::tcp::socket* sock);
-	virtual void remove(boost::asio::ip::tcp::socket* sock);
-	virtual void each(boost::asio::ip::tcp::socket* sock, std::function <void(boost::asio::ip::tcp::socket*)> other);
-	virtual void each(std::function <void(boost::asio::ip::tcp::socket*)> other);
-
-private:
-	std::vector<boost::asio::ip::tcp::socket*> client_;
+	virtual ~IClients() {};
+	virtual void add(boost::asio::ip::tcp::socket* sock) = 0;
+	virtual void remove(boost::asio::ip::tcp::socket* sock) = 0;
+	virtual void each(boost::asio::ip::tcp::socket* sock, std::function <void(boost::asio::ip::tcp::socket*)> other) = 0;
+	virtual void each(std::function <void(boost::asio::ip::tcp::socket*)> other) = 0;
+	virtual void update(boost::asio::ip::tcp::socket* sock, std::string some) = 0;
 };

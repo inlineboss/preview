@@ -5,7 +5,7 @@ add_subdirectory(libs)
 
 find_package( Boost COMPONENTS regex system program_options REQUIRED )
 
-add_executable(${PROJECT_NAME} main.cpp SyncServ.h SyncServ.cpp Clients.h Clients.cpp)
+add_executable(${PROJECT_NAME} main.cpp SyncServ.h SyncServ.cpp Clients.h ClientsBroadcast.h ClientsBroadcast.cpp ClientsCache.h ClientsCache.cpp ClientsLogger.h ClientsLogger.cpp ClientsBanner.cpp ClientsBanner.h)
 if (WIN32) 
 add_definitions(-D_WIN32_WINNT=0x0601)
 endif()

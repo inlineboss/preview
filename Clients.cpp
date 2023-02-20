@@ -19,7 +19,6 @@ void Clients::remove(boost::asio::ip::tcp::socket* sock){
 			break;
 		}
 	}
-
 }
 
 void Clients::each(boost::asio::ip::tcp::socket* sock, std::function <void(boost::asio::ip::tcp::socket*)> other){
@@ -29,6 +28,11 @@ void Clients::each(boost::asio::ip::tcp::socket* sock, std::function <void(boost
 	}
 }
 
+
 void Clients::each(std::function <void(boost::asio::ip::tcp::socket*)> other) {
 	this->each(nullptr, other);
+}
+
+void Clients::update(boost::asio::ip::tcp::socket* sock, std::string some) {
+	
 }
